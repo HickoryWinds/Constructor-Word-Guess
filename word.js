@@ -74,7 +74,7 @@ function Word(word)  {
             console.log('You Win!');
             return true;
         }
-        console.log('output');
+        // console.log('output');
         console.log(this.output);
     }
 }

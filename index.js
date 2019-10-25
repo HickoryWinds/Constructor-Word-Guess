@@ -27,7 +27,7 @@ var count;
 
 var start = function() {
     count = 0;
-    console.log('start in ' + count);
+    // console.log('start in ' + count);
     isItDone = false;
     pickedAnimal = animals[Math.floor(Math.random() * animals.length)];
     inputTest = new word.Word(pickedAnimal);
@@ -36,11 +36,11 @@ var start = function() {
     inputTest.buildIt();
     // console.log('start');
     // console.log(isItDone);
-    console.log('start-out ' + count);
+    // console.log('start-out ' + count);
     inquirer.prompt({
         name: 'playOrNot',
         type: 'rawlist',
-        message: 'Would you like to [PLAY] or [QUIT] the game?',
+        message: 'Animcal Guessing Game. Would you like to [PLAY] or [QUIT] the game?',
         choices: ['PLAY', 'QUIT']
     }).then(function(answer) {
         if (answer.playOrNot.toUpperCase()=='PLAY') {
@@ -55,7 +55,7 @@ var winCounter = 0;
 var lossCounter = 0;
 
 var guessing = function() {
-    console.log('guessing count ' + count);
+    // console.log('guessing count ' + count);
     if (count === 0) {
         inputTest.checkIt('*');
     }
@@ -97,7 +97,7 @@ var guessing = function() {
                 // console.log(input);
                 // isItDone = false;
                 // count = -1;
-                console.log('else ' + count);
+                // console.log('else ' + count);
                 // inputTest = new word.Word(pickedAnimal);
                 start();
             }
