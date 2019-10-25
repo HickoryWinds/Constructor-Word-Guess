@@ -36,7 +36,7 @@ function Letter(letter) {
             // console.log(this.letter);
             return this.letter;
         } else {
-            console.log("_");
+            // console.log("_");
             return "_";
         }
     }

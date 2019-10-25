@@ -54,13 +54,14 @@ function Word(word)  {
         this.lettersGuessed.push(couldBe);
         for (var k = 0; k < this.lettersUnder.length; k++) {
             // console.log(couldBe);
-            console.log('word-checkIt-1');
-            console.log(this.lettersGuessed);
+            // console.log('word-checkIt-1');
+            // console.log(this.lettersGuessed);
             // console.log(this.lettersUnder[k]);
             // console.log('word-checkIt-2')
             // console.log(this.lettersUnder[k].letter);
             // console.log('word-checkIt-3')
-            console.log(this.lettersUnder[k].verifyIt(couldBe));
+            // console.log(this.lettersUnder[k].verifyIt(couldBe));
+            this.lettersUnder[k].verifyIt(couldBe);
             // this.lettersUnder[k].displayIt();
             this.output.push(this.lettersUnder[k].displayIt());
         }

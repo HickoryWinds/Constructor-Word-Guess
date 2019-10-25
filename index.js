@@ -26,7 +26,8 @@ var inputTest; // = new word.Word(pickedAnimal);
 var count;
 
 var start = function() {
-    count = 1;
+    count = 0;
+    console.log('start in ' + count);
     isItDone = false;
     pickedAnimal = animals[Math.floor(Math.random() * animals.length)];
     inputTest = new word.Word(pickedAnimal);
@@ -35,10 +36,11 @@ var start = function() {
     inputTest.buildIt();
     // console.log('start');
     // console.log(isItDone);
+    console.log('start-out ' + count);
     inquirer.prompt({
         name: 'playOrNot',
         type: 'rawlist',
-        message: 'Would you like to  [PLAY] or [QUIT] the game?',
+        message: 'Would you like to [PLAY] or [QUIT] the game?',
         choices: ['PLAY', 'QUIT']
     }).then(function(answer) {
         if (answer.playOrNot.toUpperCase()=='PLAY') {
@@ -52,12 +54,12 @@ var start = function() {
 var winCounter = 0;
 var lossCounter = 0;
 
-
-
-// var count = 1;
-
 var guessing = function() {
-    if (count < 15) {
+    console.log('guessing count ' + count);
+    if (count === 0) {
+        inputTest.checkIt('*');
+    }
+    if (count < 10) {
         inquirer.prompt({
             name: 'Guess',
             type: 'input',
@@ -75,13 +77,13 @@ var guessing = function() {
                     console.log('Losses: ' + lossCounter);
                     // console.log('resetting?');
                     // count = 0 ;
-                    isItDone = false;
+                    // isItDone = false;
                     // inputTest = new word.Word(pickedAnimal);
                     start();
                 } else {
                     // isItDone = false;
-                    guessing();
                     count++;
+                    guessing();
                 }
                 // } else {
                     // console.log(bidAuction());
@@ -94,7 +96,8 @@ var guessing = function() {
                 console.log('Losses: ' + lossCounter);
                 // console.log(input);
                 // isItDone = false;
-                // count = 0;
+                // count = -1;
+                console.log('else ' + count);
                 // inputTest = new word.Word(pickedAnimal);
                 start();
             }
