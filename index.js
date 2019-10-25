@@ -12,8 +12,8 @@ var inquirer = require('inquirer');
 
 var isItDone = false;
 
-var animals = ['giraffe', 'aardvark', 'cat', 'dog'];
-console.log('length ' + animals.length);
+var animals = ['giraffe', 'aardvark', 'cat', 'dog', 'tiger', 'wolf', 'mouse', 'deer', 'squirrel'];
+// console.log('length ' + animals.length);
 
 
 // inputTest.printIt();
@@ -23,16 +23,18 @@ console.log('length ' + animals.length);
 // var inputTest = new word.Word(pickedAnimal);
 var pickedAnimal; // = animals[Math.floor(Math.random() * animals.length)];
 var inputTest; // = new word.Word(pickedAnimal);
+var count;
 
 var start = function() {
+    count = 1;
+    isItDone = false;
     pickedAnimal = animals[Math.floor(Math.random() * animals.length)];
     inputTest = new word.Word(pickedAnimal);
-    console.log('picked ' + pickedAnimal);
-    console.log(inputTest);
+    // console.log('picked ' + pickedAnimal);
+    // console.log(inputTest);
     inputTest.buildIt();
-    isItDone = false;
-    console.log('start');
-    console.log(isItDone);
+    // console.log('start');
+    // console.log(isItDone);
     inquirer.prompt({
         name: 'playOrNot',
         type: 'rawlist',
@@ -52,7 +54,7 @@ var lossCounter = 0;
 
 
 
-var count = 1;
+// var count = 1;
 
 var guessing = function() {
     if (count < 15) {
@@ -63,21 +65,21 @@ var guessing = function() {
             // choices: ['START', 'GUESS']
         }).then(function(answer) {
             // if (answer.startOrGuess.toUpperCase()=='GUESS') {
-                inputTest.checkIt(answer.Guess);
+                // inputTest.checkIt(answer.Guess);
                 isItDone = inputTest.checkIt(answer.Guess);
-                console.log('isItDone');
-                console.log(isItDone);
+                // console.log('isItDone');
+                // console.log(isItDone);
                 if (isItDone) {
                     winCounter++;
                     console.log('Wins: ' + winCounter);
                     console.log('Losses: ' + lossCounter);
-                    console.log('resetting?');
-                    count = 0 ;
+                    // console.log('resetting?');
+                    // count = 0 ;
                     isItDone = false;
-                    inputTest = new word.Word(pickedAnimal);
+                    // inputTest = new word.Word(pickedAnimal);
                     start();
                 } else {
-                    isItDone = false;
+                    // isItDone = false;
                     guessing();
                     count++;
                 }
@@ -91,9 +93,9 @@ var guessing = function() {
                 console.log('Wins: ' + winCounter);
                 console.log('Losses: ' + lossCounter);
                 // console.log(input);
-                isItDone = false;
-                count = 0;
-                inputTest = new word.Word(pickedAnimal);
+                // isItDone = false;
+                // count = 0;
+                // inputTest = new word.Word(pickedAnimal);
                 start();
             }
         }

@@ -20,7 +20,7 @@ function Letter(letter) {
     this.verifyIt = function (guess) {
         if (this.letter === guess.toLowerCase()) {
             this.guessed = true;
-            console.log('letter-verifyIt')
+            // console.log('letter-verifyIt')
             // console.log(this.guessed);
             return this.guessed;
         } else {
@@ -32,8 +32,8 @@ function Letter(letter) {
         if (this.guessed) {
             // this.guessed = true;
             // console.log(this.guessed);
-            console.log('letter-displayIt')
-            console.log(this.letter);
+            // console.log('letter-displayIt')
+            // console.log(this.letter);
             return this.letter;
         } else {
             console.log("_");

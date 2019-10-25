@@ -32,23 +32,23 @@ function Word(word)  {
             // console.log(this.word[i]);
             this.lettersUnder.push(new importLetter.Letter(this.word[i]));
             // console.log(this.lettersUnder);
-            console.log('word-buildIt-1');
-            console.log(this.lettersUnder[i].letter);
+            // console.log('word-buildIt-1');
+            // console.log(this.lettersUnder[i].letter);
             this.complete.push(this.lettersUnder[i].letter)
-            console.log('word-buildIt-2');
-            console.log(this.complete);
+            // console.log('word-buildIt-2');
+            // console.log(this.complete);
         }
     }
-    this.printIt = function() {
-        for (var j = 0; j < this.lettersUnder.length; j++) {
-            // this.lettersGuessed.join(',');
-            console.log('word-printIt')
-            console.log(this.lettersUnder[j].letter);
-            // console.log(this.lettersUnder[j].letter.importLetter.verifyIt(couldBe));
-            //  var lettersGuessed = this.lettersUnder[j].letter.join(',');
-        }
-        console.log('word-printIt')
-    }
+    // this.printIt = function() {
+    //     for (var j = 0; j < this.lettersUnder.length; j++) {
+    //         // this.lettersGuessed.join(',');
+    //         console.log('word-printIt')
+    //         console.log(this.lettersUnder[j].letter);
+    //         // console.log(this.lettersUnder[j].letter.importLetter.verifyIt(couldBe));
+    //         //  var lettersGuessed = this.lettersUnder[j].letter.join(',');
+    //     }
+    //     console.log('word-printIt')
+    // }
     this.checkIt = function(couldBe) {
         this.output = [];
         this.lettersGuessed.push(couldBe);
@@ -57,17 +57,17 @@ function Word(word)  {
             console.log('word-checkIt-1');
             console.log(this.lettersGuessed);
             // console.log(this.lettersUnder[k]);
-            console.log('word-checkIt-2')
-            console.log(this.lettersUnder[k].letter);
-            console.log('word-checkIt-3')
+            // console.log('word-checkIt-2')
+            // console.log(this.lettersUnder[k].letter);
+            // console.log('word-checkIt-3')
             console.log(this.lettersUnder[k].verifyIt(couldBe));
-            this.lettersUnder[k].displayIt();
+            // this.lettersUnder[k].displayIt();
             this.output.push(this.lettersUnder[k].displayIt());
         }
-        console.log('complete');
-        console.log(this.complete);
-        console.log(this.output.join('+'));
-        console.log(this.complete.join('+'));
+        // console.log('complete');
+        // console.log(this.complete);
+        // console.log(this.output.join('+'));
+        // console.log(this.complete.join('+'));
 
         if (this.output.join('+') === this.complete.join('+')) {
             console.log('You Win!');
