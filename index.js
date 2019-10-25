@@ -6,12 +6,15 @@
 
 var word = require('./word.js');
 
-var inquirer = require('inquirer')
+var inquirer = require('inquirer');
 
 var inputTest = new word.Word("giraffe");
 // console.log(inputTest.word);
-inputTest.buildIt();
+
+var isItDone = false;
+
 inputTest.printIt();
+
 // inputTest.checkIt('f');
 // inputTest.checkIt('g');
 // inputTest.checkIt('r');
@@ -19,6 +22,10 @@ inputTest.printIt();
 // inputTest.checkIt('f');
 
 var start = function() {
+    inputTest.buildIt();
+    isItDone = false;
+    console.log('start');
+    console.log(isItDone);
     inquirer.prompt({
         name: 'playOrNot',
         type: 'rawlist',
@@ -36,7 +43,7 @@ var start = function() {
 var count = 1;
 
 var guessing = function() {
-    if (count < 10) {
+    if (count < 15) {
         inquirer.prompt({
             name: 'Guess',
             type: 'input',
@@ -45,14 +52,34 @@ var guessing = function() {
         }).then(function(answer) {
             // if (answer.startOrGuess.toUpperCase()=='GUESS') {
                 inputTest.checkIt(answer.Guess);
-                count++;
-                guessing();
+                isItDone = inputTest.checkIt(answer.Guess);
+                console.log('isItDone');
+                console.log(isItDone);
+                if (isItDone) {
+                    console.log('resetting?');
+                    count = 0 ;
+                    isItDone = false;
+                    inputTest = new word.Word("aardvark");
+                    start();
+                } else {
+                    isItDone = false;
+                    guessing();
+                    count++;
+                }
                 // } else {
                     // console.log(bidAuction());
                     // }
                 })
+            } else {
+                console.log('You Lose!');
+                // console.log(input);
+                isItDone = false;
+                count = 0;
+                inputTest = new word.Word("aardvark");
+                start();
             }
-            
         }
 // guessing();
+// console.log('test');
+// console.log('g+_+_+_+_+_+_' === 'g+i+r+a+f+f+e');
 start();

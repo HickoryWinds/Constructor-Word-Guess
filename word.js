@@ -25,14 +25,18 @@ function Word(word)  {
     this.lettersGuessed = [];
     this.word = word.split("");
     this.output = [];
+    this.complete = [];
 
     this.buildIt = function() {
         for (var i = 0; i < this.word.length; i++) {
             // console.log(this.word[i]);
             this.lettersUnder.push(new importLetter.Letter(this.word[i]));
             // console.log(this.lettersUnder);
-            console.log('word-buildIt');
+            console.log('word-buildIt-1');
             console.log(this.lettersUnder[i].letter);
+            this.complete.push(this.lettersUnder[i].letter)
+            console.log('word-buildIt-2');
+            console.log(this.complete);
         }
     }
     this.printIt = function() {
@@ -50,15 +54,26 @@ function Word(word)  {
         this.lettersGuessed.push(couldBe);
         for (var k = 0; k < this.lettersUnder.length; k++) {
             // console.log(couldBe);
-            console.log('word-checkIt')
+            console.log('word-checkIt-1');
             console.log(this.lettersGuessed);
             // console.log(this.lettersUnder[k]);
+            console.log('word-checkIt-2')
             console.log(this.lettersUnder[k].letter);
+            console.log('word-checkIt-3')
             console.log(this.lettersUnder[k].verifyIt(couldBe));
             this.lettersUnder[k].displayIt();
             this.output.push(this.lettersUnder[k].displayIt());
         }
-        console.log('output')
+        console.log('complete');
+        console.log(this.complete);
+        console.log(this.output.join('+'));
+        console.log(this.complete.join('+'));
+
+        if (this.output.join('+') === this.complete.join('+')) {
+            console.log('You Win!');
+            return true;
+        }
+        console.log('output');
         console.log(this.output);
     }
 }

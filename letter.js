@@ -23,10 +23,9 @@ function Letter(letter) {
             console.log('letter-verifyIt')
             // console.log(this.guessed);
             return this.guessed;
+        } else {
+            return false;
         }
-        // } else {
-        //     return false;
-        // }
     }
 
     this.displayIt = function() {
