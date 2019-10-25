@@ -8,20 +8,27 @@ var word = require('./word.js');
 
 var inquirer = require('inquirer');
 
-var inputTest = new word.Word("giraffe");
 // console.log(inputTest.word);
 
 var isItDone = false;
 
-inputTest.printIt();
+var animals = ['giraffe', 'aardvark', 'cat', 'dog'];
+console.log('length ' + animals.length);
 
-// inputTest.checkIt('f');
-// inputTest.checkIt('g');
-// inputTest.checkIt('r');
-// inputTest.checkIt('t');
-// inputTest.checkIt('f');
+
+// inputTest.printIt();
+
+
+// var pickedAnimal = animals[Math.floor(Math.random() * animals.length)];
+// var inputTest = new word.Word(pickedAnimal);
+var pickedAnimal; // = animals[Math.floor(Math.random() * animals.length)];
+var inputTest; // = new word.Word(pickedAnimal);
 
 var start = function() {
+    pickedAnimal = animals[Math.floor(Math.random() * animals.length)];
+    inputTest = new word.Word(pickedAnimal);
+    console.log('picked ' + pickedAnimal);
+    console.log(inputTest);
     inputTest.buildIt();
     isItDone = false;
     console.log('start');
@@ -40,6 +47,11 @@ var start = function() {
     })
 }
 
+var winCounter = 0;
+var lossCounter = 0;
+
+
+
 var count = 1;
 
 var guessing = function() {
@@ -56,10 +68,13 @@ var guessing = function() {
                 console.log('isItDone');
                 console.log(isItDone);
                 if (isItDone) {
+                    winCounter++;
+                    console.log('Wins: ' + winCounter);
+                    console.log('Losses: ' + lossCounter);
                     console.log('resetting?');
                     count = 0 ;
                     isItDone = false;
-                    inputTest = new word.Word("aardvark");
+                    inputTest = new word.Word(pickedAnimal);
                     start();
                 } else {
                     isItDone = false;
@@ -72,10 +87,13 @@ var guessing = function() {
                 })
             } else {
                 console.log('You Lose!');
+                lossCounter++;
+                console.log('Wins: ' + winCounter);
+                console.log('Losses: ' + lossCounter);
                 // console.log(input);
                 isItDone = false;
                 count = 0;
-                inputTest = new word.Word("aardvark");
+                inputTest = new word.Word(pickedAnimal);
                 start();
             }
         }
