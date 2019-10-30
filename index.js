@@ -34,7 +34,7 @@ var start = function() {
     inquirer.prompt({
         name: 'playOrNot',
         type: 'rawlist',
-        message: 'Animcal Guessing Game. Would you like to [PLAY] or [QUIT] the game?',
+        message: 'Animal Guessing Game. Would you like to [PLAY] or [QUIT] the game?',
         choices: ['PLAY', 'QUIT']
     }).then(function(answer) {
         if (answer.playOrNot.toUpperCase()=='PLAY') {
@@ -61,7 +61,9 @@ var guessing = function() {
                 // when isItDone is true, all letters have been guessed correctly
                 isItDone = inputTest.checkIt(answer.Guess);
                 if (isItDone) {
-                    // invrease number of wins and display
+                    // show completed word
+                    console.log('You figured out the word is: ' + inputTest.complete.join(''));
+                    // increase number of wins and display
                     winCounter++;
                     console.log('Wins: ' + winCounter);
                     console.log('Losses: ' + lossCounter);
@@ -74,6 +76,8 @@ var guessing = function() {
             // if player exhausts number of guesses, round is over and players loses
             } else {
                 console.log('You Lose!');
+                // display word
+                console.log('The word is: ' + inputTest.complete.join(''));
                 // increase number of losses and display
                 lossCounter++;
                 console.log('Wins: ' + winCounter);
